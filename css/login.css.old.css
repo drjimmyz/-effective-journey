@@ -1,0 +1,54 @@
+body {
+    background-color: #B9D2C7;
+}
+
+img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+}
+
+#login_placeholder {
+    width: 20%;
+    left: 60%;
+    bottom: 150px;
+    position: absolute;
+    border: 2px solid #649B83;
+    background-color: white;
+    padding: 10px;
+}
+
+#message_placeholder {
+    width: 20%;
+    left: 60%;
+    top: 71%;
+    position: relative;
+}
+
+form {
+    position: relative;
+    width: 100%;
+}
+
+input {
+    position: relative;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-width: 2px;
+    border-bottom-color: #649B83;
+    outline-color: #649B83;
+}
+
+input[type=submit] {
+    position: absolute;
+    width: 50%;
+    right: 0px;
+    border: 2px solid #649B83;
+    border-top: none;
+    border-bottom: 2px solid #649B83;
+    background-color: white;
+    color: #649B83;
+}
