@@ -24,8 +24,7 @@
     <ul id='menu'>
         <li><a href='index.php'>Home</a></li>
         <?php echo"<li><a href='movie_list.php?user_id=$user_id'>Movie list</a></li>"; ?>
-        <li><a href='index.php'>Pictures</a></li>
-        <li><a href='index.php'>Stuff</a></li>
+        
         <li><a href='user_list.php'>User list</a></li>
     </ul>
     </div>
