@@ -251,6 +251,7 @@ Dropdown menu stuff.
     display: block;
     background-color: #649B83;
     width: 100%;
+    padding-right: 15px;
 }
 
 #dropdown-menu {
