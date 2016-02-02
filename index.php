@@ -22,15 +22,8 @@
     <div id='top'>
     <img src='pictures/logo.png' id='logo'>
 
-    <ul id='menu'>
-        <li><a href='index.php'>Home</a></li>
-        <?php echo"<li><a href='movie_list.php?user_id=$user_id'>Movie list</a></li>"; ?>
-        
-        <li><a href='user_list.php'>User list</a></li>
-    </ul>
+    <?php include_once 'private/menu.php'; ?>
     </div>
-
-
 
     <div id='main'>
 
@@ -58,6 +51,6 @@
     </div>
     <div id='bottom'>
     </div>
-
+    <script src="js/dropdown-menu.js"></script>
 </body>
 </html>

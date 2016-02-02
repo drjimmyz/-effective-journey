@@ -4,7 +4,6 @@
     require_once 'private/mysql_fix_string.php';
     $username = $_SESSION['username'];
     $user_id = $_SESSION['user_id'];
-    $ini_id = $user_id;
 
     // If it's not the logged in users id, this will be set to true.
     $other_profile = false;
@@ -102,26 +101,9 @@
     <div id='top'>
     <img src='pictures/logo.png' id='logo'>
 
-    <ul id='menu'>
-        <li class='menu-item'><a href='index.php'>Home</a></li>
-        <?php echo "<li class='menu-item'><a href='movie_list.php?user_id=$ini_id'>Movie list</a></li>"; ?>
-        <li class='menu-item'><a href='user_list.php'>User list</a></li>
-        <div class='dropdown-limiter'>
-            <li class='menu-item'><a id='menu-dropdown-trigger' href='#'>Admin</a></li>
-            <div class='dropdown-panel' id='dropdown-menu'>
-            <ul class='dropdown-list'>
-                <li class='menu-item'>Item1</li>
-                <li class='menu-item'>Item2</li>
-                <li class='menu-item'>Item3</li>
-                <li class='menu-item'>Item4</li>
-            </ul>
-            </div>
-        </div>
-    </ul>
+    <?php include_once 'private/menu.php'; ?>
+
     </div>
-
-
-
     <div id='main'>
     <table id='video_ratings'>
         <tr>
