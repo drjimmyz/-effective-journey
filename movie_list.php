@@ -88,7 +88,7 @@
 <html>
 <head>
     <title>Site</title>
-    <script src="jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link rel='stylesheet' type='text/css' href='css/main.css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
@@ -103,10 +103,20 @@
     <img src='pictures/logo.png' id='logo'>
 
     <ul id='menu'>
-        <li><a href='index.php'>Home</a></li>
-        <?php echo "<li><a href='movie_list.php?user_id=$ini_id'>Movie list</a></li>"; ?>
-        
-        <li><a href='user_list.php'>User list</a></li>
+        <li class='menu-item'><a href='index.php'>Home</a></li>
+        <?php echo "<li class='menu-item'><a href='movie_list.php?user_id=$ini_id'>Movie list</a></li>"; ?>
+        <li class='menu-item'><a href='user_list.php'>User list</a></li>
+        <div class='dropdown-limiter'>
+            <li class='menu-item'><a id='menu-dropdown-trigger' href='#'>Admin</a></li>
+            <div class='dropdown-panel' id='dropdown-menu'>
+            <ul class='dropdown-list'>
+                <li class='menu-item'>Item1</li>
+                <li class='menu-item'>Item2</li>
+                <li class='menu-item'>Item3</li>
+                <li class='menu-item'>Item4</li>
+            </ul>
+            </div>
+        </div>
     </ul>
     </div>
 
@@ -199,5 +209,6 @@
     <div id='bottom'>
     </div>
 
+    <script src="js/dropdown-menu.js"></script>
 </body>
 </html>

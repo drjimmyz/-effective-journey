@@ -103,7 +103,7 @@ ul#menu {
     background-color: #649B83;
 }
 
-ul#menu li {
+ul#menu li.menu-item {
     display: inline-block;
     position: relative;
     margin-left: 10px;
@@ -115,7 +115,7 @@ ul#menu li {
     transition: ease-in-out 0.1s;
 }
 
-ul#menu li:hover {
+ul#menu li.menu-item:hover {
     background-color: #408165;
 }
 
@@ -234,4 +234,34 @@ div.px20div {
 div.inline-centerer {
     text-align: center;
     width: 100%;
+}
+
+/*
+Dropdown menu stuff.
+*/
+
+.dropdown-limiter {
+    display: inline-block;
+    width: 125px;
+    position: absolute;
+}
+
+.dropdown-panel {
+    z-index: 100;
+    display: block;
+    background-color: #649B83;
+    width: 100%;
+}
+
+#dropdown-menu {
+    display: none;
+}
+
+.dropdown-list {
+    list-style-type: none;
+}
+
+.dropdown-panel li {
+    font-size: 25px;
+    color: white;
 }
