@@ -9,7 +9,7 @@
         echo "<li class='menu-item'><a id='menu-dropdown-trigger' href='#'>Admin</a></li>";
         echo "<div class='dropdown-panel' id='dropdown-menu'>";
         echo "<ul class='dropdown-list'>";
-        echo "<li class='menu-item'>Item1</li>";
+        echo "<li class='menu-item'>Pictures</li>";
         echo "<li class='menu-item'>Item2</li>";
         echo "<li class='menu-item'>Item3</li>";
         echo "<li class='menu-item'>Item4</li>";
