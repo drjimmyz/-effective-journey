@@ -13,6 +13,7 @@
 <html>
 <head>
     <title>Site</title>
+    <script src="jquery-1.12.0.min.js"></script>
     <link rel='stylesheet' type='text/css' href='css/main.css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
