@@ -14,6 +14,7 @@
         $user_id = $_SESSION['user_id'];
         $ini_id = $user_id;
         $user_class = $_SESSION['user_class'];
+        $username = $_SESSION['username'];
         $ts_connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
         $ts_query = "UPDATE users SET last_seen=CURRENT_TIMESTAMP WHERE user_id='$user_id'";
         $ts_result = $ts_connection->query($ts_query);
