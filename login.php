@@ -27,6 +27,7 @@
                 session_start();
                 $_SESSION['username'] = $un_temp;
                 $_SESSION['user_id'] = $row['user_id'];
+                $_SESSION['user_class'] = $row['user_class'];
                 $_SESSION['check'] = hash('ripemd128',
                     $_SERVER['REMOTE_ADDR'] . $_SERVER['HTTP_USER_AGENT']);
 
