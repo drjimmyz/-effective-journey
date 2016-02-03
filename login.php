@@ -51,28 +51,27 @@
         return $connection->real_escape_string($string);
     }
 
-    echo <<<_END
-        <html>
-        <head>
-        <title>Login</title>
-        <link rel='stylesheet' type='text/css' href='css/login.css'>
-        </head>
-        <body>
-        <img src='pictures/bunny.png'>
-        <div id='login_placeholder'>
-        <div id='form_holder'>
-        <form method='post' action='login.php'>
-        <input type='text' name='username' placeholder='Username' required autofocus>
-        <input type='password' name='password' placeholder='Password' required>
-        <input type='submit' value='Login'>
-        </form>
-        </div>
-        <div id='message_placeholder'>
-        <a href='register.php'>Register</a>
-        $enter_pw
-        </div>
-        </div>
-        </body>
-        </html>
-_END
 ?>
+
+<html>
+<head>
+<title>Login</title>
+<link rel='stylesheet' type='text/css' href='css/login.css'>
+</head>
+<body>
+<img src='pictures/bunny.png'>
+<div id='login_placeholder'>
+<div id='form_holder'>
+<form method='post' action='login.php'>
+<input type='text' name='username' placeholder='Username' required autofocus>
+<input type='password' name='password' placeholder='Password' required>
+<input type='submit' value='Login'>
+</form>
+</div>
+<div id='message_placeholder'>
+<a href='register.php'>Register</a>
+<?php echo $enter_pw; ?>
+</div>
+</div>
+</body>
+</html>
