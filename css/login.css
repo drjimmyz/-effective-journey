@@ -31,23 +31,17 @@ body {
     overflow-y: scroll;
 }
 
-img {
-    height: 100%;
-}
-
 #login_content {
     width: 300px;
-    height: 140px;
     margin: auto 20% auto auto;
 
 }
 
 #form_holder {
-    height: 70%;
-    width: 100%;
     border: 2px solid #649B83;
     border-radius: 10px;
     background-color: white;
+    padding: 20px;
 }
 
 #message_placeholder {
@@ -56,36 +50,26 @@ img {
 
 form {
     position: relative;
-    height: 80%;
-    width: 88%;
     margin: auto;
     display: block;
-    top: 20%;
 }
 
 input {
     display: block;
-    height: 27%;
     width: 100%;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom-width: 2px;
-    border-bottom-color: #649B83;
+    border: none;
+    border-bottom: 2px solid #649B83;;
     outline: none;
 }
 
 input[type=submit] {
-    margin-top: 0px;
-    position: absolute;
     display: block;
     width: 50%;
-    right: 0px;
     border: 2px solid #649B83;
     border-top: none;
-    border-bottom: 2px solid #649B83;
     background-color: white;
     color: #649B83;
+    margin: auto 0px auto auto;
 }
 
 input[type=submit]:focus {

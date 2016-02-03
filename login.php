@@ -69,7 +69,7 @@
 </form>
 </div>
 <div id='message_placeholder'>
-<a href='register.php'>Register</a>
+<a href='register.php'>Register</a><br><br>
 <?php echo $enter_pw; ?>
 </div>
 </div>
