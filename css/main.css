@@ -77,8 +77,7 @@ p {
 }
 
 #main {
-    width: 60%;
-    min-width: 500px;
+    width: 500px;
     min-height: 1000px;
     background-color: white;
     margin: auto;
@@ -215,7 +214,7 @@ div.px20div {
     display: none;
 }
 
-.stnd-button {
+.stnd-button, .stnd-button-large {
     border: 1px solid #649B83;
     border-radius: 5px;
     background-color: white;
@@ -225,11 +224,19 @@ div.px20div {
     display: inline-block;
 }
 
-.stnd-button:hover {
+.stnd-button:hover, .stnd-button-large:hover {
     border-color: #649B83;
     background-color: #649B83;
     color: white;
 }
+
+
+.stnd-button-large {
+    font-size: 26px;
+    margin: 0px 15px 0px 15px;
+}
+
+
 
 div.inline-centerer {
     text-align: center;
@@ -265,4 +272,13 @@ Dropdown menu stuff.
 .dropdown-panel li {
     font-size: 25px;
     color: white;
+}
+
+/*
+Pictures
+*/
+
+#img_buttons {
+    text-align: center;
+    margin-top: 30px;
 }
