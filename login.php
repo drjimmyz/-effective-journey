@@ -59,8 +59,8 @@
 <link rel='stylesheet' type='text/css' href='css/login.css'>
 </head>
 <body>
-<img src='pictures/bunny.png'>
-<div id='login_placeholder'>
+<div id='login_middle'>
+<div id='login_content'>
 <div id='form_holder'>
 <form method='post' action='login.php'>
 <input type='text' name='username' placeholder='Username' required autofocus>
@@ -71,6 +71,7 @@
 <div id='message_placeholder'>
 <a href='register.php'>Register</a>
 <?php echo $enter_pw; ?>
+</div>
 </div>
 </div>
 </body>
