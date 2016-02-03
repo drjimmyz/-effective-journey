@@ -12,8 +12,7 @@ body {
 }
 
 #form_holder {
-    width: 30%;
-    min-width: 400px;
+    width: 450px;
     background-color: white;
     border: 2px solid #649B83;
     border-radius: 10px;
@@ -22,20 +21,16 @@ body {
 }
 
 .error_holder {
-    margin: auto;
-    margin-top: 3px;
-    margin-bottom: 0px;
+    margin: 3px auto 0px auto;
     border: none;
     width: 80%;
     outline: none;
-    color: red;
+    color: #dd4b39;
 }
 
 input {
     display: block;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 0px;
+    margin: 30px auto 0px auto;
     border: none;
     border-bottom: 2px solid #649B83;
     width: 80%;
