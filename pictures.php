@@ -36,7 +36,7 @@
         if ($result->num_rows)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            header("Location: pictures.php?img_id=" . $row['img_id']);
+            header("Location: pictures.php?img_id=" . $row['img_id'] . "#main");
             exit();
         }
     }
