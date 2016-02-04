@@ -60,8 +60,8 @@
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
         $("#img_display").attr("src", "show_img.php?src=" + paths[current_img]);
+        window.history.replaceState("object or string", "Title", "pictures.php?img_id=" + img_ids[current_img]);
     }
-
     var img_ids = [], titles = [], paths = [];
     var current_img;
 
@@ -102,35 +102,11 @@
 <?php
     if (!$no_image)
     {
+        echo "<div id='img_title'>";
+        echo "<h2></h2>";
+        echo "</div>";
         echo "<iframe id='img_display' width='100%' src='show_img.php?src=$img_path' frameborder='0' scrolling='no' onload='resizeIframe(this)'></iframe>";
-
-        $next = 'null';
-        $prev = 'null';
-
-        $query = "SELECT * FROM user_images WHERE user_id='$user_id' AND img_id>'$img_id' ORDER BY img_id LIMIT 1";
-        $result = $connection->query($query);
-        if ($result->num_rows)
-            {
-                $row = $result->fetch_array(MYSQLI_ASSOC);
-                $next = "show_img.php?src=" . $row['path'];
-            }
-
-        $query = "SELECT * FROM user_images WHERE user_id='$user_id' AND img_id<'$img_id' ORDER BY img_id DESC LIMIT 1";
-        $result = $connection->query($query);
-        if ($result->num_rows)
-            {
-                $row = $result->fetch_array(MYSQLI_ASSOC);
-                $prev = "show_img.php?src=" . $row['path'];
-            }
-?>
-
-<div id='img_title'>
-<h2>
-</h2>
-</div>
-
-<?php
-        echo "<div id='img_buttons'>";
+        echo "<div class='img_buttons'>";
         echo "<button class='stnd-button-large' onclick='updateIframe(-1)'>Prev image</button>";
         echo "<button class='stnd-button-large' onclick='updateIframe(1)'>Next image</button>";
         echo "</div>";
