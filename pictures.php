@@ -51,6 +51,7 @@
     function resizeIframe(obj)
     {
         obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        $("#img_title > h2").text(titles[current_img]);
     }
 
     function updateIframe(dir)
@@ -121,7 +122,14 @@
                 $row = $result->fetch_array(MYSQLI_ASSOC);
                 $prev = "show_img.php?src=" . $row['path'];
             }
+?>
 
+<div id='img_title'>
+<h2>
+</h2>
+</div>
+
+<?php
         echo "<div id='img_buttons'>";
         echo "<button class='stnd-button-large' onclick='updateIframe(-1)'>Prev image</button>";
         echo "<button class='stnd-button-large' onclick='updateIframe(1)'>Next image</button>";
