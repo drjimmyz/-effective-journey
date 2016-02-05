@@ -57,6 +57,12 @@
         $("#img_display").attr("src", paths[current_img]);
         window.history.pushState("object or string", "Title", "pictures.php?img_id=" + img_ids[current_img]);
     }
+
+    function updateTitle()
+    {
+        $("#img_title > h2").text(titles[current_img]);
+    }
+
     var img_ids = [], titles = [], paths = [];
     var current_img;
 
@@ -98,9 +104,11 @@
     if (!$no_image)
     {
         echo "<div id='img_title'>";
-        echo "<h2></h2>";
+        echo "<h2>$img_title</h2>";
         echo "</div>";
-        echo "<img id='img_display' src='$img_path'>";
+        echo "<div id='img_area'>";
+        echo "<img id='img_display' src='$img_path' onload='updateTitle()'>";
+        echo "</div>";
         echo "<div class='img_buttons'>";
         echo "<button class='stnd-button-large' onclick='updateImage(-1)'>Prev image</button>";
         echo "<button class='stnd-button-large' onclick='updateImage(1)'>Next image</button>";
