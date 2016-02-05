@@ -6,7 +6,7 @@
     if ($user_class=='admin')
     {
         echo "<div class='dropdown-limiter'>";
-        echo "<li class='menu-item'><a id='menu-dropdown-trigger' href='#'>Admin</a></li>";
+        echo "<li class='menu-item'><a id='menu-dropdown-trigger'>Admin</a></li>";
         echo "<div class='dropdown-panel' id='dropdown-menu'>";
         echo "<ul class='dropdown-list'>";
         echo "<li class='menu-item'><a href='pictures.php'>Pictures</a></li>";

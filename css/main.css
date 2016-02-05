@@ -23,6 +23,10 @@ a:visited {
     text-decoration: none;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 html, body {
     width: 100%;
     background-color: white;
