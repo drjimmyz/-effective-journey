@@ -36,7 +36,7 @@
         if ($result->num_rows)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            header("Location: pictures.php?img_id=" . $row['img_id'] . "#main");
+            header("Location: pictures.php?img_id=" . $row['img_id']);
             exit();
         }
     }
@@ -48,19 +48,14 @@
     <title>Site</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
-    function resizeIframe(obj)
-    {
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-        $("#img_title > h2").text(titles[current_img]);
-    }
 
-    function updateIframe(dir)
+    function updateImage(dir)
     {
         current_img += dir;
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
-        $("#img_display").attr("src", "show_img.php?src=" + paths[current_img]);
-        window.history.replaceState("object or string", "Title", "pictures.php?img_id=" + img_ids[current_img]);
+        $("#img_display").attr("src", paths[current_img]);
+        window.history.pushState("object or string", "Title", "pictures.php?img_id=" + img_ids[current_img]);
     }
     var img_ids = [], titles = [], paths = [];
     var current_img;
@@ -97,7 +92,7 @@
 
 <body>
 <?php include_once 'private/top_and_menu.php'; ?>
-<div id='main'>
+<div id='img_viewer'>
 
 <?php
     if (!$no_image)
@@ -105,10 +100,10 @@
         echo "<div id='img_title'>";
         echo "<h2></h2>";
         echo "</div>";
-        echo "<iframe id='img_display' width='100%' src='show_img.php?src=$img_path' frameborder='0' scrolling='no' onload='resizeIframe(this)'></iframe>";
+        echo "<img id='img_display' src='$img_path'>";
         echo "<div class='img_buttons'>";
-        echo "<button class='stnd-button-large' onclick='updateIframe(-1)'>Prev image</button>";
-        echo "<button class='stnd-button-large' onclick='updateIframe(1)'>Next image</button>";
+        echo "<button class='stnd-button-large' onclick='updateImage(-1)'>Prev image</button>";
+        echo "<button class='stnd-button-large' onclick='updateImage(1)'>Next image</button>";
         echo "</div>";
     }
     else echo "<p>No images uploaded yet.</p>";
