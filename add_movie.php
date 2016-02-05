@@ -93,7 +93,7 @@
     function validate_title($field)
     {
         if (strlen($field) > 64) return "Stop it.";
-        elseif (!preg_match("/^[a-zA-Z 0-9]+$/", $field)) return "Invalid title. Currently only accepts a-z, A-Z and 0-9.";
+        elseif (!preg_match("/^[a-zA-Z0-9 ']+$/", $field)) return "Invalid title. Currently only accepts a-z, A-Z and 0-9.";
         else return "";
     }
 
