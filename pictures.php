@@ -2,11 +2,6 @@
     require_once 'private/check_login.php';
     require_once 'private/sqldetails.php';
     require_once 'private/mysql_fix_string.php';
-    if ($user_class != 'admin')
-    {
-        header('Location: index.php');
-        exit();
-    }
     $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
     $no_image = true;
 

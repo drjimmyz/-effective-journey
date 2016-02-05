@@ -2,6 +2,7 @@
     <li class='menu-item'><a href='index.php'>Home</a></li>
     <?php echo "<li class='menu-item'><a href='movie_list.php?user_id=$ini_id'>Movie list</a></li>"; ?>
     <li class='menu-item'><a href='user_list.php'>User list</a></li>
+    <li class='menu-item'><a href='pictures.php'>Pictures</a></li>
     <?php
     if ($user_class=='admin')
     {
