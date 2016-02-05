@@ -32,7 +32,7 @@
         if ($result->num_rows)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            header("Location: images.php?img_id=" . $row['img_id']);
+            header("Location: images.php?img_id=" . $row['img_id'] . "#img_viewer");
             exit();
         }
     }
@@ -119,8 +119,11 @@
         echo "<button class='stnd-button-large' onclick='updateImage(-1)'>Prev image</button>";
         echo "<button class='stnd-button-large' onclick='updateImage(1)'>Next image</button>";
         echo "</div>";
+        echo "<div class='img_buttons'>";
+        echo "<a class='stnd-button-large'href='upload.php'>Upload image</a>";
+        echo "</div>";
     }
-    else echo "<p>No images uploaded yet.</p>";
+    else echo "<p>No images uploaded yet.</p> <a class='stnd-button'href='upload.php'>Upload one now</a>";
 
 ?>
 
@@ -132,7 +135,7 @@
 <?php
     if (!$no_image)
     {
-        echo "<script> window.history.replaceState(current_img, 'Title', 'images.php?img_id=' + img_ids[current_img]);</script>";
+        echo "<script> window.history.replaceState(current_img, 'Title', 'images.php?img_id=' + img_ids[current_img] + '#img_viewer');</script>";
     }
 ?>
 </body>

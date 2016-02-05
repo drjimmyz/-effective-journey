@@ -4,8 +4,24 @@ border-color: #649B83;
 another color: #E1EBE7;
 reddish: #E5B1C1;
 transition color: #408165;
-
 */
+
+@media all and (max-width: 1300px) {
+    #img_viewer {
+        width: 1024px !important;
+    }
+
+    #img_area {
+        width: 1024px !important;
+        height: 576px !important;
+    }
+
+    #img_display {
+        max-width: 1024px !important;
+        max-height: 576px !important;
+    }
+}
+
 
 * {
     margin: 0px;
@@ -82,7 +98,7 @@ p {
 }
 
 #main {
-    width: 500px;
+    width: 800px;
     min-height: 1000px;
     background-color: white;
     margin: auto;
@@ -302,9 +318,11 @@ Pictures
 }
 
 #img_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 720px;
     width: 1280px;
-    border: 1px solid black;
 }
 
 #img_display {
