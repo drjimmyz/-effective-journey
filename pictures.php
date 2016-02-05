@@ -23,6 +23,7 @@
             $row = $result->fetch_array(MYSQLI_ASSOC);
             $img_path = $row['path'];
             $img_title = $row['title'];
+
             $no_image = false;
         }
     }
@@ -48,14 +49,24 @@
     <title>Site</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script>
-    
+
+    window.onpopstate = function(event)
+    {
+        if (event.state || event.state == 0)
+        {
+            current_img = event.state;
+            $("#img_display").attr("src", paths[current_img]);
+            updateTitle();
+        }
+    }
+
     function updateImage(dir)
     {
         current_img += dir;
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
         $("#img_display").attr("src", paths[current_img]);
-        window.history.pushState("object or string", "Title", "pictures.php?img_id=" + img_ids[current_img]);
+        window.history.pushState(current_img, "Title", "pictures.php?img_id=" + img_ids[current_img]);
     }
 
     function updateTitle()
@@ -123,5 +134,11 @@
 <div id='bottom'>
 </div>
 <script src="js/dropdown-menu.js"></script>
+<?php
+    if (!$no_image)
+    {
+        echo "<script> window.history.replaceState(current_img, 'Title', 'pictures.php?img_id=' + img_ids[current_img]);</script>";
+    }
+?>
 </body>
 </html>
