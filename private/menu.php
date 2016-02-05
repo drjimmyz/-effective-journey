@@ -2,7 +2,7 @@
     <li class='menu-item'><a href='index.php'>Home</a></li>
     <?php echo "<li class='menu-item'><a href='movie_list.php?user_id=$ini_id'>Movie list</a></li>"; ?>
     <li class='menu-item'><a href='user_list.php'>User list</a></li>
-    <li class='menu-item'><a href='pictures.php'>Pictures</a></li>
+    <li class='menu-item'><a href='images.php'>Images</a></li>
     <?php
     if ($user_class=='admin')
     {
@@ -10,7 +10,7 @@
         echo "<li class='menu-item'><a id='menu-dropdown-trigger'>Admin</a></li>";
         echo "<div class='dropdown-panel' id='dropdown-menu'>";
         echo "<ul class='dropdown-list'>";
-        echo "<li class='menu-item'><a href='pictures.php'>Pictures</a></li>";
+        echo "<li class='menu-item'><a href='images.php'>Pictures</a></li>";
         echo "<li class='menu-item'>Item2</li>";
         echo "<li class='menu-item'>Item3</li>";
         echo "<li class='menu-item'>Item4</li>";

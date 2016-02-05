@@ -32,7 +32,7 @@
         if ($result->num_rows)
         {
             $row = $result->fetch_array(MYSQLI_ASSOC);
-            header("Location: pictures.php?img_id=" . $row['img_id']);
+            header("Location: images.php?img_id=" . $row['img_id']);
             exit();
         }
     }
@@ -61,7 +61,7 @@
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
         $("#img_display").attr("src", paths[current_img]);
-        window.history.pushState(current_img, "Title", "pictures.php?img_id=" + img_ids[current_img]);
+        window.history.pushState(current_img, "Title", "images.php?img_id=" + img_ids[current_img]);
     }
 
     function updateTitle()
@@ -132,7 +132,7 @@
 <?php
     if (!$no_image)
     {
-        echo "<script> window.history.replaceState(current_img, 'Title', 'pictures.php?img_id=' + img_ids[current_img]);</script>";
+        echo "<script> window.history.replaceState(current_img, 'Title', 'images.php?img_id=' + img_ids[current_img]);</script>";
     }
 ?>
 </body>
