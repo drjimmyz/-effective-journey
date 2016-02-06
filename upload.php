@@ -17,9 +17,10 @@
 
         $title = fix_string($_POST['title']);
         validate_title($title) == '' ? $uploadOK = 1 : $uploadOK = 0;
-    
+        $target_file = hash('ripemd128', $_FILES['fileToUpload']['tmp_name']) . "." . $imageFileType;
+        $target_path = $target_dir . $target_file;
 
-        if (file_exists($target_file))
+        if (file_exists($target_path))
         {
             $uploadOK = 0;
             $fail_msg = 'Already exists.';
@@ -44,8 +45,6 @@
         else
         {
 
-            $target_file = hash('ripemd128', $_FILES['fileToUpload']['tmp_name']) . "." . $imageFileType;
-            $target_path = $target_dir . $target_file;
             if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path))
             {
                 $fail_msg = 'File uploaded.';
