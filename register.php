@@ -28,11 +28,10 @@
 
     if (isset($_POST['submit']))
     {
-        validate_username($username);
+        $fail = validate_username($username);
         $fail .= validate_password($password);
         $fail .= validate_email($email);
         $fail .= validate_key($key);
-
 
         if ($fail == "" && isset($_POST['username']) && isset($_POST['password']) &&
             isset($_POST['email']) && isset($_POST['key']))
@@ -116,31 +115,31 @@
     {
         if ($field == "") return "No username was entered<br>";
         else if (strlen($field) > 16)
-            $UN_fail = "<div class='error_holder'>Username max length is 16 characters.</div>";
+            return "Username max length is 16 characters.";
         else if (preg_match("/[^a-zA-Z0-9_-]/", $field))
-            $UN_fail = "<div class='error_holder'>Only letters, numbers, - and _ in usernames.</div>";
+            return "Only letters, numbers, - and _ in usernames.";
         else return "";
     }
 
     // Length 10-16 characters, only a-z, A-Z, 0-9, - and _.
     function validate_password($field)
     {
-        if ($field == "") $PW_fail = "<div class='error_holder'>No password was entered.</div>";
-        else if (strlen($field) < 10) $PW_fail = "<div class='error_holder'>Passwords must be at least 10 characters.</div>";
-        else if (strlen($field) > 16) $PW_fail = "<div class='error_holder'>Password max length is 16 characters.</div>";
+        if ($field == "") return "No password was entered.";
+        else if (strlen($field) < 10) return "Passwords must be at least 10 characters.";
+        else if (strlen($field) > 16) return "Password max length is 16 characters.";
         else if (preg_match("/[^a-zA-Z0-9_-]/", $field))
-            $PW_fail = "<div class='error_holder'>Only letters, numbers, - and _ in passwords.</div>";
+            return "Only letters, numbers, - and _ in passwords.";
         else return "";
     }
 
     // Length 10-64 characters, not invalid.
     function validate_email($field)
     {
-        if ($field == "") $EM_fail = error_div("No e-mail was entered.");
-        else if (strlen($field) < 5) $EM_fail = error_div("E-mail must be at least 5 characters.");
-        else if (strlen($field) > 64) $EM_fail = error_div("E-mail max length is 64 characters.");
-        else if (preg_match("/[^a-zA-Z0-9.@_-]/", $field))
-            $EM_fail = error_div("Invalid e-mail.");
+        if ($field == "") return "No e-mail was entered.";
+        else if (strlen($field) < 5) return "E-mail must be at least 5 characters.";
+        else if (strlen($field) > 64) return "E-mail max length is 64 characters.";
+        else if (!filter_var($field, FILTER_VALIDATE_EMAIL))
+            return "Invalid e-mail.";
         else return "";
     }
 
@@ -148,11 +147,11 @@
     function validate_key($field)
     {
         if ($field == "")
-            $KEY_fail = "<div class='error_holder'>No key was entered.</div>";
+            return "No key was entered.";
         else if (strlen($field) != 16)
-            $KEY_fail = "<div class='error_holder'>You have entered an invalid key.</div>";
+            return "You have entered an invalid key.";
         else if (preg_match("/[^a-zA-Z0-9_-]/", $field))
-            $KEY_fail = "<div class='error_holder'>You have entered an invalid key.</div>";
+            return "You have entered an invalid key.";
         else return "";
     }
 
