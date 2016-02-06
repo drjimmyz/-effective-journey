@@ -44,18 +44,21 @@
         else
         {
 
-            $target_file = $target_dir . hash('ripemd128', $_FILES['fileToUpload']['tmp_name']) . "." . $imageFileType;
-            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_file))
+            $target_file = hash('ripemd128', $_FILES['fileToUpload']['tmp_name']) . "." . $imageFileType;
+            $target_path = $target_dir . $target_file;
+            if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path))
             {
                 $fail_msg = 'File uploaded.';
 
                 $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
                 $ti_temp = mysql_entities_fix_string($connection, $title);
                 $query = "INSERT INTO user_images(user_id, title, path)
-                          VALUES ('$user_id', '$ti_temp', '$target_file')";
+                          VALUES ('$user_id', '$ti_temp', '$target_path')";
                 $result = $connection->query($query);
                 if (!$result) die($connection->error);
                 $connection->close();
+
+                makeThumbnail($target_dir, $target_file);
             }
             else
             {
@@ -77,6 +80,43 @@
     {
         if (get_magic_quotes_gpc()) $string = stripslashes($string);
         return htmlentities ($string);
+    }
+
+    function makeThumbnail($updir, $img)
+    {
+        $thumbnail_width = 150;
+        $thumbnail_height = 150;
+        $thumb_beforeword = "thumb";
+        $arr_image_details = getimagesize("$updir" . "$img");
+        $original_width = $arr_image_details[0];
+        $original_height = $arr_image_details[1];
+        if ($original_width > $original_height) {
+            $new_width = $thumbnail_width;
+            $new_height = intval($original_height * $new_width / $original_width);
+        } else {
+            $new_height = $thumbnail_height;
+            $new_width = intval($original_width * $new_height / $original_height);
+        }
+        $dest_x = intval(($thumbnail_width - $new_width) / 2);
+        $dest_y = intval(($thumbnail_height - $new_height) / 2);
+        if ($arr_image_details[2] == 1) {
+            $imgt = "ImageGIF";
+            $imgcreatefrom = "imagecreatefromgif";
+        }
+        if ($arr_image_details[2] == 2) {
+            $imgt = "ImageJPEG";
+            $imgcreatefrom = "imagecreatefromjpeg";
+        }
+        if ($arr_image_details[2] == 3) {
+            $imgt = "ImagePNG";
+            $imgcreatefrom = "imagecreatefrompng";
+        }
+        if ($imgt) {
+            $old_image = $imgcreatefrom("$updir" . "$img");
+            $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
+            imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
+            $imgt($new_image, "$updir" . "$thumb_beforeword" . "$img");
+        }
     }
 
 ?>
