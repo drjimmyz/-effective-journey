@@ -58,7 +58,7 @@
     }
 
     // Reset variables if they have been used earlier.
-    $title = $director = $year = $imdb_rating = $rating = $date = '';
+    //$title = $director = $year = $imdb_rating = $rating = $date = '';
 
     if (isset($_GET['entry_id']))
     {

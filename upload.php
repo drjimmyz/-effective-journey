@@ -11,7 +11,7 @@
         $target_dir = 'uploads/';
         $uploadOK = 1;
         $target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
-        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         $check = getimagesize($_FILES['fileToUpload']['tmp_name']);
         $check !== false ? $uploadOK = 1 : $uploadOK = 0;
 
