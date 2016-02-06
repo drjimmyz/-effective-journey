@@ -295,7 +295,7 @@ Dropdown menu stuff.
 }
 
 /*
-Pictures
+Images
 */
 
 .img_buttons {
@@ -312,7 +312,7 @@ Pictures
     text-align: center;
     width: 1280px;
     margin: auto;
-    padding: 30px 0px 30px 0px;
+    padding: 0px 0px 30px 0px;
 }
 
 #img_area {
@@ -326,6 +326,24 @@ Pictures
 #img_display {
     max-height: 720px;
     max-width: 1280px;
+}
+
+#thumb_navigator {
+    position: absolute;
+    background-color: black;
+    height: 933px;
+    overflow-y: scroll;
+    width: calc((100% - 1280px) / 2);
+    left: 0px;
+}
+
+.thumbnail, .thumbnail-active {
+    display: block;
+    margin: 0 auto;
+}
+
+.thumbnail-active {
+    border: 1px solid white;
 }
 
 /*

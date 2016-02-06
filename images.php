@@ -51,22 +51,24 @@
         {
             current_img = event.state;
             $("#img_display").attr("src", paths[current_img]);
-            updateTitle();
         }
     }
 
     function updateImage(dir)
     {
-        current_img += dir;
+        current_img = dir;
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
         $("#img_display").attr("src", paths[current_img]);
         window.history.pushState(current_img, "Title", "images.php?img_id=" + img_ids[current_img]);
     }
 
-    function updateTitle()
+    function updateInfo()
     {
+        $(".thumbnail-active").attr('class', 'thumbnail');
         $("#img_title > h2").text(titles[current_img]);
+        $("#thumb_" + img_ids[current_img]).attr('class', 'thumbnail-active');
+        $("#thumb_navigator").scrollTop(current_img*75);
     }
 
     var img_ids = [], titles = [], paths = [];
@@ -79,7 +81,8 @@
     if (!$result) die($connection->error);
 
     $rows = $result->num_rows;
-
+    $paths = array();
+    $img_ids = array();
     for ($j = 0; $j < $rows; ++$j)
     {
         $result->data_seek($j);
@@ -88,6 +91,8 @@
         echo "img_ids.push(\"" . $row['img_id'] ."\");";
         echo "titles.push(\"" . $row['title'] ."\");";
         echo "paths.push(\"" . $row['path'] ."\");";
+        array_push($paths, str_replace("/", "/thumb", $row['path']));
+        array_push($img_ids, $row['img_id']);
 
     }
 
@@ -104,20 +109,35 @@
 
 <body>
 <?php include_once 'private/top_and_menu.php'; ?>
+<div id='main'>
 <div id='img_viewer'>
+<div id='thumb_navigator'>
+
+<?php
+    $index = 0;
+    foreach ($paths as $path)
+    {
+        echo "<img class='thumbnail' src='$path' id='" . "thumb_" . "$img_ids[$index]' ";
+        echo "onclick='updateImage($index)'>";
+        $index++;
+    }
+?>
+
+</div>
 
 <?php
     if (!$no_image)
     {
         echo "<div id='img_title'>";
+        echo "<br>"; // temporary solution
         echo "<h2>$img_title</h2>";
         echo "</div>";
         echo "<div id='img_area'>";
-        echo "<img id='img_display' src='$img_path' onload='updateTitle()'>";
+        echo "<img id='img_display' src='$img_path' onload='updateInfo()'>";
         echo "</div>";
         echo "<div class='img_buttons'>";
-        echo "<button class='stnd-button-large' onclick='updateImage(-1)'>Prev image</button>";
-        echo "<button class='stnd-button-large' onclick='updateImage(1)'>Next image</button>";
+        echo "<button class='stnd-button-large' onclick='updateImage(current_img-1)'>Prev image</button>";
+        echo "<button class='stnd-button-large' onclick='updateImage(current_img+1)'>Next image</button>";
         echo "</div>";
         echo "<div class='img_buttons'>";
         echo "<a class='stnd-button-large'href='upload.php'>Upload image</a>";
@@ -128,7 +148,7 @@
 ?>
 
 </div>
-
+</div>
 <div id='bottom'>
 </div>
 <script src="js/dropdown-menu.js"></script>
