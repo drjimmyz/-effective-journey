@@ -238,6 +238,7 @@ div.px20div {
     border: 1px solid #649B83;
     border-radius: 5px;
     background-color: white;
+    margin: 0px 10px;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     padding: 2px 4px 2px 4px;
@@ -298,9 +299,13 @@ Dropdown menu stuff.
 Images
 */
 
-.img_buttons {
+.img_buttons, .img_buttons_right {
     text-align: center;
     margin-top: 30px;
+}
+
+.img_buttons_right {
+    text-align: right;
 }
 
 #img_title {
@@ -344,6 +349,10 @@ Images
 
 .thumbnail-active {
     border: 1px solid white;
+}
+
+.inline-form {
+    display: inline;
 }
 
 /*

@@ -139,8 +139,12 @@
         echo "<button class='stnd-button-large' onclick='updateImage(current_img-1)'>Prev image</button>";
         echo "<button class='stnd-button-large' onclick='updateImage(current_img+1)'>Next image</button>";
         echo "</div>";
-        echo "<div class='img_buttons'>";
-        echo "<a class='stnd-button-large'href='upload.php'>Upload image</a>";
+        echo "<div class='img_buttons_right'>";
+        echo "<a class='stnd-button'href='upload.php'>Upload image</a>";
+        echo "<form method='post' action='images.php' class='inline-form'>";
+        echo "<input type='hidden' id='delete_id' name='delete' value='$img_id'>";
+        echo "<input class='stnd-button' value='Delete image' type='submit' name='submit'>";
+        echo "</form>";
         echo "</div>";
     }
     else echo "<p>No images uploaded yet.</p> <a class='stnd-button'href='upload.php'>Upload one now</a>";
