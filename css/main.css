@@ -143,26 +143,26 @@ ul#menu a {
     text-decoration: none;
 } 
 
-table#video_ratings {
+table#ratings {
     margin: auto;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
 }
 
-table#video_ratings th, table#video_ratings td {
+table#ratings th, table#ratings td {
     padding-right: 33px;
     border-collapse: collapse;
 }
 
-table#video_ratings td.del-edit {
+table#ratings td.del-edit {
     background-color: white;
 }
 
-table#video_ratings th {
+table#ratings th {
     text-align: left;
 }
 
-table#video_ratings tr.even {
+table#ratings tr.even {
     background-color: #f9f9f9;
 }
 
@@ -358,3 +358,35 @@ Images
 /*
 Image upload
 */
+
+
+/*
+books.php
+*/
+
+.column-right {
+    position: absolute;
+    text-align: center;
+    width: 50%;
+    right: 10%;
+}
+.column-left {
+    position: absolute;
+    text-align: center;
+    width: 30%;
+    left: 10%;
+}
+
+.update-box {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.text-align-right {
+
+}

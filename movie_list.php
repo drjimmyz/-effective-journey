@@ -105,7 +105,7 @@
 
     </div>
     <div id='main'>
-    <table id='video_ratings'>
+    <table id='ratings'>
         <tr>
         <?php
             $user_string = "&user_id=$user_id";

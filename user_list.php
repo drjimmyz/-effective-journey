@@ -31,7 +31,7 @@
     </div>
 
     <div id='main'>
-    <table id='video_ratings'>
+    <table id='ratings'>
         <tr>
             <th>User</th>
             <th>Joined</th>
