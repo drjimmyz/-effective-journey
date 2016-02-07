@@ -4,6 +4,39 @@
     require_once 'private/mysql_fix_string.php';
     $connection = new mysqli($db_hostname, $db_username, $db_password, $db_database);
     $no_image = true;
+    $status_msg = '';
+
+    if(isset($_POST['delete']))
+    {
+        $delete_id = mysql_entities_fix_string($connection, $_POST['delete']);
+        $query = "SELECT * FROM user_images WHERE img_id='$delete_id' AND user_id='$user_id'";
+
+        $result = $connection->query($query);
+        if (!$result) die($connection->error);
+
+        if ($result->num_rows)
+        {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            $thumb_path = str_replace("/", "/thumb", $row['path']);
+            if (file_exists($row['path']))
+            {
+                unlink($row['path']);
+                $status_msg = 'file deleted.';
+            }
+            if (file_exists($thumb_path))
+            {
+                unlink($thumb_path);
+                $status_msg = 'thumb deleted.';
+            }
+
+            $query = "DELETE FROM user_images WHERE img_id='$delete_id' AND user_id='$user_id'";
+            $result = $connection->query($query);
+            if (!$result) die($connection->error);
+            $connection->close();
+            header('Location: images.php');
+
+        }
+    }
 
     if(isset($_GET['img_id']))
     {
@@ -69,6 +102,7 @@
         $("#img_title > h2").text(titles[current_img]);
         $("#thumb_" + img_ids[current_img]).attr('class', 'thumbnail-active');
         $("#thumb_navigator").scrollTop(current_img*75);
+        $("#delete_id").attr('value', img_ids[current_img]);
     }
 
     var img_ids = [], titles = [], paths = [];
@@ -143,9 +177,10 @@
         echo "<a class='stnd-button'href='upload.php'>Upload image</a>";
         echo "<form method='post' action='images.php' class='inline-form'>";
         echo "<input type='hidden' id='delete_id' name='delete' value='$img_id'>";
-        echo "<input class='stnd-button' value='Delete image' type='submit' name='submit'>";
+        echo "<input type='submit' class='stnd-button' value='Delete image'>";
         echo "</form>";
         echo "</div>";
+        echo $status_msg;
     }
     else echo "<p>No images uploaded yet.</p> <a class='stnd-button'href='upload.php'>Upload one now</a>";
 
