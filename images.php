@@ -93,7 +93,7 @@
         if (current_img < 0) current_img = paths.length-1;
         if (current_img > paths.length-1) current_img = 0;
         $("#img_display").attr("src", paths[current_img]);
-        window.history.pushState(current_img, "Title", "images.php?img_id=" + img_ids[current_img]);
+        window.history.pushState(current_img, "Title", "images.php?img_id=" + img_ids[current_img] + '#img_viewer');
     }
 
     function updateInfo()
@@ -101,7 +101,7 @@
         $(".thumbnail-active").attr('class', 'thumbnail');
         $("#img_title > h2").text(titles[current_img]);
         $("#thumb_" + img_ids[current_img]).attr('class', 'thumbnail-active');
-        $("#thumb_navigator").scrollTop(current_img*75);
+        $("#thumb_navigator").scrollTop(current_img*150-450);
         $("#delete_id").attr('value', img_ids[current_img]);
     }
 
