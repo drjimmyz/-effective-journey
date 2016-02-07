@@ -15,6 +15,9 @@
 <body>
 <?php include_once 'private/top_and_menu.php'; ?>
 <div id='main'>
+
+
+
 </div>
 <div id='bottom'>
 </div>
