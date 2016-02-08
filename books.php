@@ -18,7 +18,7 @@
 <body>
 <?php include_once 'private/top_and_menu.php'; ?>
 <div id='main'>
-<div class='column-right'>
+<div class='column-books'>
 <h2>Books</h2><br><br>
 <table id='ratings'>
 <tr>
@@ -57,7 +57,7 @@
 </table>
 </div>
 
-<div class='column-left'>
+<div class='column-updates'>
 <h2>Updates</h2><br><br>
 <?php
     for ($i = 0; $i < count($book_ids); $i++)

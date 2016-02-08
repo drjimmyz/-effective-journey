@@ -364,17 +364,17 @@ Image upload
 books.php
 */
 
-.column-right {
-    position: absolute;
+.column-books {
+    display: inline-block;
+    vertical-align: top;
     text-align: center;
-    width: 50%;
-    right: 10%;
+    width: 60%;
 }
-.column-left {
-    position: absolute;
+.column-updates {
+    display: inline-block;
+    vertical-align: top;
     text-align: center;
     width: 30%;
-    left: 10%;
 }
 
 .update-box {
