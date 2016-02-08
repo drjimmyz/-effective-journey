@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site</title>
+    <link rel='stylesheet' type='text/css' href='../css/mobler.css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div id='content'>
+<div id='left_holder'><img id='left' src='left.png' height='50px'><img id='left_hover' src='left-active.png' height='50px'></div>
+<div id='right_holder'><img id='right' src='right.png' height='50px'><img id='right_hover' src='right-active.png' height='50px'></div>
+<div id='list_div'>
+<ul class='img-list'>
+<li> <img class='list-img' src='1.jpg'> </li>
+<li> <img class='list-img' src='2.jpg'> </li>
+<li> <img class='list-img' src='3.jpg'> </li>
+</ul>
+</div>
+
+<div id='0' class='dot'></div>
+<div id='1' class='dot'></div>
+<div id='2' class='dot'></div>
+</div>
+
+<script>
+var images = 2; // One less than actual because of 0 index
+var index = 0;
+var last_active;
+update_last_active();
+
+$(".dot").click(function() {
+    update_last_active()
+    var tmp = $(this);
+    $(".dot-active").attr('class', 'dot');
+    $(tmp).attr('class', 'dot-active');
+    animateTo($(tmp).attr('id'));
+});
+
+$("#0").attr('class', 'dot-active');
+
+$("#right_hover").click(function() {
+    update_last_active()
+    if(index < images)
+    {
+        $("#list_div").animate({
+            left: "-=533"
+        }, 600, "swing", function() {
+        });
+        index++;
+        var sibling = $(".dot-active").next();
+        $(".dot-active").attr('class', 'dot');
+        $(sibling).attr('class', 'dot-active');
+    }
+    else
+    {
+        $("#list_div").animate({
+            left: "+=1066"
+        }, 600, "swing", function() {
+        });
+        index=0;
+        var sibling = $(".dot-active").prev().prev();
+        $(".dot-active").attr('class', 'dot');
+        $(sibling).attr('class', 'dot-active');
+    }
+});
+
+$("#left_hover").click(function() {
+    update_last_active()
+    if(index > 0)
+    {
+        $("#list_div").animate({
+            left: "+=533"
+        }, 600, "swing", function() {
+        });
+        index--;
+        var sibling = $(".dot-active").prev();
+        $(".dot-active").attr('class', 'dot');
+        $(sibling).attr('class', 'dot-active');
+    }
+});
+
+$("#right").mouseenter(function() {
+    update_last_active()
+    $("#right").hide();
+    $("#right_hover").show();
+});
+
+$("#right_hover").mouseleave(function() {
+    $("#right_hover").hide();
+    $("#right").show();
+});
+
+$("#left").mouseenter(function() {
+    update_last_active()
+    $("#left").hide();
+    $("#left_hover").show();
+});
+
+$("#left_hover").mouseleave(function() {
+    $("#left_hover").hide();
+    $("#left").show();
+});
+
+function animateTo(img_index) {
+    index = img_index;
+    $("#list_div").animate({
+            left: -img_index*533
+        }, 600, "swing", function() {
+        });
+}
+
+function update_last_active() {
+    var d = new Date();
+    last_active = d.getTime();
+}
+
+function forward() {
+    var d = new Date();
+    var n = d.getTime();
+    if(n - last_active > 5000)
+    {
+        $("#right_hover").click();
+    }
+}
+
+setInterval(function()
+    {
+        forward();
+    }, 6000);
+</script>
+</body>
+</html>
